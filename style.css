@@ -250,7 +250,7 @@ li{
   color: var(--mainColor);
   padding: 0px;
 }
-#shopping-cart-menu button:hover{
+#shopping-cart-menu* button:hover{
   color: var(--mainAltColor);
   cursor: pointer;
 }
@@ -899,18 +899,38 @@ nav#shopping-cart-id{
 }
 
 /* products */
+.products .product{
+  color: var(--mainColor);
+}
 .woocommerce ul.products li.product .woocommerce-loop-product__title{
   font-size: var(--h4Size);
   margin-left: var(--productCardPadding);
   margin-right: var(--productCardPadding);
 }
+
 .products .product:hover h2{
   text-decoration: underline;
   color: var(--mainAltColor);
 }
 .woocommerce ul.products li.product a img{
   border-radius: var(--productImgRadius);
-  margin: 0px 0px .5em 0px;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+.products .product .products-hidden-content{
+  background-color: var(--navPopupBackground);
+  border-radius: 0px 0px var(--productImgRadius) var(--productImgRadius);
+
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  
+}
+.products .product:hover .products-hidden-content{
+  display: block;
 }
 .woocommerce ul.products li.product .price{
   color: var(--productPrice);
@@ -950,46 +970,6 @@ nav#shopping-cart-id{
 }
 .woocommerce-ordering option{
   padding: 6px 10px;
-}/* products */
-.products .product{
-  color: var(--mainColor);
-  
-}
-.woocommerce ul.products li.product .woocommerce-loop-product__title{
-  font-size: var(--h4Size);
-  margin-left: var(--productCardPadding);
-  margin-right: var(--productCardPadding);
-}
-.products .product:hover h2{
-  text-decoration: underline;
-  color: var(--mainAltColor);
-}
-.woocommerce ul.products li.product a img{
-  border-radius: var(--productImgRadius);
-  margin: 0px 0px .5em 0px;
-}
-.woocommerce ul.products li.product .price{
-  color: var(--productPrice);
-  font-family: monospace;
-  margin-left: var(--productCardPadding);
-  margin-right: var(--productCardPadding);
-}
-.products .product .button{
-  background-color: var(--mainAltColor);
-  color: var(--productColor);
-  text-align: center;
-  margin-left: var(--productCardPadding);
-
-  border-radius: var(--buttonRadius);
-  box-shadow: var(--boxShadow);
-}
-.products .product .button:hover{
-  background-color: var(--mainAltColor);
-  color: var(--productColor);
-  filter: brightness(90%);
-}
-.products .product .added_to_cart{
-  margin-left: 8px;
 }
 
 /* Ordering products */
