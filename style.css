@@ -13,13 +13,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   */
   --mainBackground: #1F2421;
   --mainBackgroundLighter: #2f3631;
-  --mainLogoColor: #62f5d4;
+  --mainLogoColor: #76d5c0;
   
   --mainColor: #E8E9F3;
-  --mainAltColor: #62f5d4;
-  --secondAltColor: #FFD447;
-  --tagColor: #FFD447;
-  --starColor: #FFD447;
+  --mainAltColor: #76d5c0;
+  --secondAltColor: #DEB841;
+  --tagColor: #DEB841;
+  --starColor: #DEB841;
   --darkColor: #2F2A27;
 
   --navBackground: rgba(180, 184, 197, 0.25);
@@ -250,7 +250,7 @@ li{
   color: var(--mainColor);
   padding: 0px;
 }
-#shopping-cart-menu* button:hover{
+#shopping-cart-menu button:hover{
   color: var(--mainAltColor);
   cursor: pointer;
 }
@@ -919,7 +919,7 @@ nav#shopping-cart-id{
 }
 .woocommerce-page ul.products li.product {
   float: none;
-  margin: 2px 4px;
+  margin: 2em 4px;
   padding: 0;
   position: relative;
   width: auto;
@@ -927,12 +927,6 @@ nav#shopping-cart-id{
 }
 ul.products li {
   list-style: none outside;
-}
-.woocommerce ul.products li.last,
-.woocommerce-page ul.products li.last {
-}
-.woocommerce ul.products li.product .products-hidden-content{
-
 }
 .woocommerce ul.products li.product .button {
   margin: auto 8px 8px 0px;
@@ -1383,6 +1377,15 @@ color: var(--wp--preset--color--vivid-cyan-blue);
 }
 
 /* Checkout */
+.woocommerce .woocommerce-order-downloads a.button.alt{
+  background-color: var(--secondAltColor);
+  color: var(--productColor);
+}
+.woocommerce .woocommerce-order-downloads a.button.alt:hover{
+  background-color: var(--secondAltColor);
+  color: var(--productColor);
+  filter: brightness(90%);
+}
 .woocommerce #customer_details{
   background-color: var(--mainBackgroundLighter);
   padding: var(--cardPadding);
@@ -1564,6 +1567,9 @@ Responsive Design
   :root{
     --pageWidth: 1080px;
   }
+  .woocommerce-page ul.products.columns-3 li.product{
+    width: 49%;
+  }
 }
 @media screen and (max-width: 1180px) {
   :root{
@@ -1572,9 +1578,7 @@ Responsive Design
   .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{
     flex-basis: 50% !important;
   }
-  .woocommerce-page ul.products.columns-3 li.product{
-    width: 49%;
-  }
+  
 }
 @media screen and (max-width: 1000px) {
   :root{
