@@ -101,14 +101,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @font-face {
   font-family: iceland;
   src: url(fonts/Iceland-Regular.ttf);
+  font-display: swap;
 }
 @font-face {
   font-family: krub;
   src: url(fonts/Krub-Regular.ttf);
-}
-@font-face {
-  font-family: kirang-haerang;
-  src: url(fonts/KirangHaerang-Regular.ttf);
+  font-display: swap;
 }
 
 
@@ -117,7 +115,7 @@ body{
   color: var(--mainColor);
   margin: 0px;
   
-  font-family: var(--fontText), 'Open Sans', sans-serif;
+  font-family: var(--fontText), sans-serif;
 }
 h1{
   font-family: var(--fontHeading);
@@ -713,7 +711,8 @@ div.wpforms-container-full .wpforms-form .wpforms-required-label{
 /*
 * WooCommerce
 */
-.woocommerce-store-notice, p.demo_store{
+
+.woocommerce-store-notice, p.demo_store, .admin-bar p.demo_store{
   position: fixed;
   bottom: 0;
   top: auto;
