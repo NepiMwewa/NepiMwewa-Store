@@ -781,6 +781,12 @@ nav#shopping-cart-id{
   right: 0;
   margin-top: 10px;
   margin-right: 20px;
+  background-color: transparent;
+  border: none;
+}
+.cart-close:hover{
+  cursor: pointer;
+  filter: brightness(90%);
 }
 .cart-close svg{
   border-radius: 100px;
@@ -1583,6 +1589,9 @@ Responsive Design
   :root{
     --pageWidth: 800px;
     --navLinkSize: 3rem;
+    --footerBigLinkSize: 1.75rem;
+    --footerSmallLinkSize: 1.25rem;
+    --footerCopyrightSize: 1rem;
   }
   .reverse-column{
     -webkit-flex-direction: column-reverse;
@@ -1693,6 +1702,9 @@ Responsive Design
     width: auto;
     margin: 0px 4px;
     padding-top: 40px;
+  }
+  a{
+    font-size: var(--footerBigLinkSize);
   }
 }
 @media screen and (max-width: 880px) {
