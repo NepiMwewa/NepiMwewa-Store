@@ -22,15 +22,18 @@ function toggleCart(){
   let shoppingId = document.getElementById("shopping-cart-id");
   let hamburgerId = document.getElementById("hamburger-menu");
   let shopMenuId = document.getElementById("shopping-cart-menu");
+  let cartMenu = document.getElementById("shopping-toggle");
   if(!shopToggle){
     shoppingId.classList.add("shopping-cart-open");
     hamburgerId.classList.add("hamburger-move");
     shopMenuId.classList.add("menu-move");
+    cartMenu.ariaExpanded = true;
     shopToggle = true;
   }else{
     shoppingId.classList.remove("shopping-cart-open");
     hamburgerId.classList.remove("hamburger-move");
     shopMenuId.classList.remove("menu-move");
+    cartMenu.ariaExpanded = false;
     shopToggle = false;
   }
   if(menuToggle){
