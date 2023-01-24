@@ -462,13 +462,11 @@ li{
 .peaks{
   background-image: url('./assets/peaks.svg');
 }
-
 .no-margin{
   width: auto;
   margin-left: 0px;
   margin-right: 0px;
 }
-
 section{
   width: var(--pageWidth);
   margin: auto;
