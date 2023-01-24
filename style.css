@@ -26,6 +26,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --navPopupBackground: rgba(0,0,0, 0.5);
   --footerBackground: rgba(0, 0, 0, 0.25);
   --tableBorderColor: rgba(212, 216, 230, 0.164);
+  --altColorTrans: #76d5c0e0;
 
   --productColor: #2F2A27;
 
@@ -54,15 +55,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   /*
    * Fonts
   */
-  --fontHeading: 'iceland';
-  --fontText: 'krub';
+  --fontHeading: 'julee';
+  --fontText: 'raleway';
   --fontWritten: 'kirang-haerang';
 
-  --h1Size: 6rem;
+  --h1Size: 4rem;
   --h2Size: 3rem;
   --h3Size: 2rem;
   --h4Size: 2rem;
-  --textSize: 1.3rem;
+  --textSize: 1.25rem;
   --postSize: 1rem;
   --hoursTextSize: 1.3rem;
   --navLinkSize: 2rem;
@@ -79,7 +80,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --pageMargin: auto;
   --pageTopMargin: 74px;
   /*front page */
-  --frontPageTopMargin: 10vh;
+  --frontPageTopMargin: 0px;
 
   /* card */
   --cardPadding: 10px;
@@ -99,13 +100,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 @font-face {
-  font-family: iceland;
-  src: url(fonts/Iceland-Regular.ttf);
+  font-family: julee;
+  src: url(fonts/Julee-Regular.ttf);
   font-display: swap;
 }
 @font-face {
-  font-family: krub;
-  src: url(fonts/Krub-Regular.ttf);
+  font-family: raleway;
+  src: url(fonts/Raleway-Variable.ttf);
   font-display: swap;
 }
 
@@ -159,8 +160,8 @@ a:hover{
 }
 p{
   font-size: var(--textSize);
-  line-height: 1.5;
-  
+  line-height: 1.4;
+  font-weight: 200;
 }
 li{
   font-size: var(--textSize);
@@ -405,6 +406,113 @@ li{
   display: block;
 }
 
+/*
+* front page styles
+*/
+
+#front-page-content{
+  margin-top: 0px;
+  width: auto;
+  margin: 0px;
+}
+
+#front-page-content .front-page-img img{
+  width: 100%;
+  height: 100%;
+}
+#front-page-content .banner-hero{
+  position: relative;
+}
+#front-page-content .banner-hero .title-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 35vh;
+  left: 10vw;
+  border-radius: 26% 74% 70% 30% / 58% 61% 39% 42% ;
+  background-color: var(--altColorTrans);
+  aspect-ratio: 1;
+  padding: 2rem;
+}
+#front-page-content #front-page-title{
+  width: min-content;
+  color: var(--darkColor);
+  margin: 0px;
+}
+.end-of-banner-hero {
+  position: absolute;
+  top: 0;
+}
+
+.spacer{
+  border: none;
+  aspect-ratio: 960/540;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.spacer-top{
+  margin-top: 30vh;
+}
+.spacer-bottom{
+  margin-bottom: 30vh;
+}
+.peaks{
+  background-image: url('./assets/peaks.svg');
+}
+
+.no-margin{
+  width: auto;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+section{
+  width: var(--pageWidth);
+  margin: auto;
+}
+.set-relative{
+  position: relative;
+}
+
+.framed img{
+  border: solid 16px var(--mainColor);
+  box-shadow: var(--boxShadow);
+}
+.tall-skinny{
+  transform: rotate(5.43deg);
+}
+.short-fat{
+  position: relative;
+  top: -130px;
+  left: -390px;
+  transform: rotate(-4.01deg);
+}
+.h2-raised{
+  margin: 0px auto;
+  padding: 0px;
+  position: relative;
+  top: -30px;
+  width: min-content;
+  min-width: 400px;
+  letter-spacing: 0.2em;
+}
+.my-journey p{
+  padding-right: 12px;
+}
+.spacer-picture{
+  position: relative;
+  top: -250px;
+  z-index: -3;
+}
+
+.spacer-picture figure{
+  margin: 0px;
+}
+
+
   /* 
   *  Page Styles
   */
@@ -470,9 +578,7 @@ li{
   width: var(--pageWidth);
   margin-top: var(--pageTopMargin);
 }
-.front-page-content{
-  margin-top: var(--frontPageTopMargin);
-}
+
 .remove-margins{
   margin: 0px;
 }
