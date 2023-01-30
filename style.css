@@ -537,6 +537,7 @@ section{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+  
   .service-card{
     background-color: var(--mainBackground);
     transition: background-color var(--cardColorCurve);
@@ -548,7 +549,7 @@ section{
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
   }
   .service-card .service-grouped-content{
     height: 100%;
@@ -587,17 +588,7 @@ section{
     transition: color var(--cardColorCurve);
   }
   .service-card .grouped-button{
-    
-    display: flex;
-    justify-content: center;
     position: absolute; 
-  }
-  .service-card .grouped-button > div{
-    position: absolute;
-    top: 0;
-    height: 0px;
-    opacity: 1;
-    transition: opacity var(--cardColorCurve);
   }
   .service-card button{
     color: var(--mainColor);
@@ -607,20 +598,14 @@ section{
     border: none;
     padding: 0px;
     font-size: 0px;
-    cursor: pointer;
-    height: 0px;
-  }
-  .service-card button:focus{
+    cursor: pointer;  
     padding: calc(0.667em + 2px) calc(1.333em + 2px);
-    margin-top: 10px;
     font-size: 1.125em; 
-    height: auto;
+    opacity: 0;
   }
-  .service-card button:hover{
-    filter: brightness(90%);
-  }
+
   .service-card:hover{
-    background-color: var(--mainAltColor);
+    background-color: var(--mainAltColor) !important;
     color: var(--darkColor);
   }
   @keyframes appear {
@@ -631,13 +616,28 @@ section{
       opacity: 1;
     }
   }
+  @keyframes moveContentUp{
+    0%{
+      transform: translateY(0px);
+    }
+    100%{
+      transform: translateY(-20px);
+    }
+  }
   @keyframes moveButtonUp {
     0%{
-      transform: translateY(40px);
+      transform: translateY(20px);
+      opacity: 0;
     }
     100%{
       transform: translateY(0px);
+      opacity: 1;
     }
+  }
+  .service-card:hover .service-grouped-content > div{
+    transform: translateY(-20px);
+    animation: 2s 1 moveContentUp;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .service-card:hover svg,
   .service-card:hover p{
@@ -645,27 +645,16 @@ section{
   }
   .service-card:hover .grouped-button{
     transform: translateY(0px);
-    animation: 1s 1 moveButtonUp;
+    animation: 2s 1 moveButtonUp;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
-  .service-card:hover .grouped-button,
-  .service-card:hover .grouped-button > div,
-  .service-card:hover .grouped-button button{
-    height: auto;
-  }
-  .service-card:hover .grouped-button button{
-    padding: calc(0.667em + 2px) calc(1.333em + 2px);
-    margin-top: 10px;
-    font-size: 1.125em;
-  }
-  .service-card:hover p{
-    font-weight: 400;
-  }
-  .service-card:hover .grouped-button > div{
+  .service-card:hover .grouped-button button,
+  .service-card .grouped-button button:focus{
     opacity: 1;
   }
-
-
+  .service-card button:hover{
+    filter: brightness(90%);
+  }
 
   /* 
   *  Page Styles
@@ -1891,6 +1880,18 @@ Responsive Design
     top: -220px;
   }
 
+  .service-card-container > div{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-card-container > div .service-card{
+    background-color: var(--mainBackground);
+  }
+  .service-card-container > div .service-card:nth-child(1),
+  .service-card-container > div .service-card:nth-child(4),
+  .service-card-container > div .service-card:nth-child(5){
+    background-color: var(--mainBackgroundLighter);
+  }
+
   .reverse-column{
     -webkit-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -2035,6 +2036,38 @@ Responsive Design
   }  
 }
 @media screen and (max-width: 768px) {
+
+  .service-card-container > div{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .service-card-container > div .service-card:nth-child(2n){
+    background-color: var(--mainBackground);
+  }
+  .service-card-container > div .service-card:nth-child(odd){
+    background-color: var(--mainBackgroundLighter);
+  }
+  .service-card button{
+    opacity: 1;
+  }
+  .service-card:hover .service-grouped-content > div{
+    transform: translateY(-20px);
+    animation: none;
+  }
+  .service-card:hover .grouped-button{
+    animation: none;
+
+  }
+
+  .service-card:hover{
+    background-color: inherit !important;
+    color: var(--mainColor);
+  }
+  .service-card:hover p{
+    color: var(--mainColor);
+  }
+  .service-card:hover svg{
+    color: var(--mainAltColor);
+  }
   .single-product .product .woocommerce-product-gallery__image > a img{
     border-radius: 10px 10px 0px 0px;
   }
