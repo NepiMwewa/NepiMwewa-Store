@@ -4,6 +4,7 @@
 function aerospace_museum_styles() {
   wp_enqueue_style('style', get_stylesheet_uri());
   wp_enqueue_script( 'menuToggle', get_template_directory_uri() . '/js/menuToggle.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'modalToggle', get_template_directory_uri() . '/js/modalToggle.js', array(), '1.0.0', true );
 }
 add_action('wp_enqueue_scripts', 'aerospace_museum_styles', 15);
 
