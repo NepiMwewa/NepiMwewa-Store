@@ -69,11 +69,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --h4Size: 2rem;
   --textSize: 1.25rem;
   --postSize: 1rem;
-  --hoursTextSize: 1.3rem;
   --navLinkSize: 2rem;
   --footerBigLinkSize: 1.5rem;
   --footerSmallLinkSize: 1rem;
   --footerCopyrightSize: 0.8rem;
+  --formFontSize: 1.3rem;
+  --formSmallFontSize: 0.9rem;
+  --formXSmallFontSize: 0.8rem;
 
 
   /*
@@ -131,6 +133,9 @@ body{
   margin: 0px;
   
   font-family: var(--fontText), sans-serif;
+}
+.no-scroll{
+  overflow: hidden;
 }
 h1{
   font-family: var(--fontHeading);
@@ -692,14 +697,16 @@ section{
   .modal-card > div{
     position: relative;
     margin-top: calc( 2vh + 64px);
-    display: flex;
-    height: calc(90vh - 20px);
-    width: calc(90vw - 20px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    height: calc(90vh - 1em);
+    width: calc(90vw - 1em);
     background-color: #1F2421;
     border: 1px solid#8F8F8F;
     border-radius: 10px;
     overflow-y: auto;
-    padding: 20px;
+    padding: 1em;
   }
   .modal-card .left-section > div{
     display: flex;
@@ -714,13 +721,14 @@ section{
     border-top-left-radius: 10px;
   }
   .modal-card button{
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed;
+    top: calc( 2vh + 64px + 2em);
+    right: calc( 5vw + 3em);
     width: 40px;
+    z-index: 3;
     aspect-ratio: 1;
     border-radius: 100%;
-    background-color: transparent;
+    background-color: var(--mainBackgroundLighter);
     border-color: var(--mainAltColor);
   }
   .modal-card button svg{
@@ -728,60 +736,64 @@ section{
     width: 100%;
     height: 100%;
     color: var(--mainColor);
-    
   }
   .modal-card button:hover{
     cursor: pointer;
     filter: brightness(90%);
   }
-
+  .modal-card .wpcf7{
+    padding-bottom: 1em;
+  }
+  .modal-card .wpcf7 form{
+    padding: 1em 2em;
+  }
   /*
   * Form Styles
   */
-
+  form{
+    background-color: var(--altBackgroundColor);
+    border-radius: 10px;
+    border-top-left-radius: 5px;
+  }
   form input,
   form textarea{
     padding: .4em;
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: var(--formFontSize);
     border-color: white;
   }
   form p{
-    margin: .5em 0px;
+    font-size: var(--formFontSize);
+    margin: 1em 0px;
   }
   form a{
-    font-size: var(--textSize);
+    font-size: var(--formFontSize);
   }
-  
-    form label,
-    form span,
-    form input,
-    form textarea{
+  form p .heading-label{
+    font-size: var(--h3Size);
+    text-align: center;
+    padding-bottom: 1em;
+  }
+  form hr{
+    border-color: var(--tableBorderColor) !important;
+    width: calc(100% - 2em);
+  }
+  form label,
+  form span,
+  form input,
+  form textarea{
     width: 100%;
     display: inline-block;
     margin: 0px;
+    font-size: var(--formFontSize);
+    font-family: var(--fontText);
   }
-  
-  form .wpcf7-acceptance span,
-  form .wpcf7-acceptance span label,
-  form .wpcf7-acceptance label input{
-    width: auto;
-    display: inline-block;
+  form label{
+    font-size: var(--formFontSize);
   }
-  form .wpcf7-acceptance label span{
-    display: inline;
-  }
-  form .wpcf7-acceptance{
-    margin-top: 1em;
-    width: auto;
-    display: inline-block;
-  }
-
   form .radio-group.wpcf7-form-control.wpcf7-radio{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1em;
   }
   form .radio-group .wpcf7-list-item{
@@ -791,6 +803,7 @@ section{
   }
   form .radio-group .wpcf7-list-item label{
     transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   form .radio-group .wpcf7-list-item input[type=radio]{
     position: absolute;
@@ -798,36 +811,49 @@ section{
     left: 6px;
     width: auto;
     z-index: 2;
+    clip-path: polygon(0 0);
   }
   form .radio-group .wpcf7-list-item label input ~ span{
     background-color: var(--cardBackground);
     width: fit-content;
-    height: 5em;
+    
     position: relative;
-    width: 300px;
+    width: 100%;
+    aspect-ratio: 1;
     border-radius: var(--buttonRadius);
+    
+    border-radius: 100% 0% 100% 0% / 0% 100% 0% 100%;
     box-shadow: var(--boxShadow), inset 2px 2px 0px rgba(255, 255, 255, 0.096), inset -2px -2px 0px rgba(43, 43, 43, 0.267);
     padding: 1em 1em;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition-property:  background-color;
-    transition-duration: .5s;
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-property:  background-color, border-radius;
+    transition-duration: .6s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   form .radio-group .wpcf7-list-item label:hover{
-    transform: scale(1.047) translateZ(0);
-    z-index: 1;
+    transform: scale(115%) translateZ(0);
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
-    
+    cursor: pointer;
+  }
+
+  
+  form .radio-group .wpcf7-list-item label input:hover ~ span{
+    border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
   }
   form .radio-group .wpcf7-list-item label input:checked ~ span{
     background-color: var(--mainAltColorDarker);
     color: var(--darkColor);
     font-weight: 400;
     box-shadow: var(--boxShadow), inset 2px 2px 0px rgba(255, 255, 255, 0.438), inset -2px -2px 0px rgba(37, 37, 37, 0.445);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  form .radio-group .wpcf7-list-item label input:focus-visible ~ span{
+    border: 4px var(--mainColor) solid;
+    box-shadow: inset 0px 0px 0px 10px var(--cardBackground);
   }
   form .radio-group .wpcf7-list-item label,
   form .radio-group label span.wpcf7-list-item-label{
@@ -854,6 +880,7 @@ section{
   form div.same-line p,
   form div.same-line input{
     width: 100%;
+    margin: 0px;
   }
   form textarea,
   form input[type=text],
@@ -874,11 +901,98 @@ section{
     border-color: black;
     box-shadow: 0px 0px 0px 1px var(--mainBackground);
   }
-  .wpcf7-not-valid-tip{
+  .wpcf7-not-valid-tip,
+  form .dnd-upload-status .dnd-upload-details span.has-error{
     color: #ff5c5c;
   }
   form label.wpforms-error{
     color: var(--secondMainColor);
+  }
+  /* drag and drop form */
+  form span.dnd-upload-counter,
+  form span.dnd-upload-counter > span{
+    width: auto;
+  }
+  form .dnd-upload-status .dnd-upload-image span.file{
+    fill: white;
+  }
+  form .dnd-upload-status span{
+    width: auto;
+  }
+  form.dnd-upload-status .dnd-upload-image{
+    border-width: 1px;
+    border-color: var(--boarderColor);
+  }
+  form .dnd-upload-counter,
+  form .dnd-upload-counter > span{
+    font-size: var(--formXSmallFontSize);
+  }
+  form .codedropz-upload-wrapper .remove-file span::after{
+    filter: invert(1);
+    width: 24px;
+  }
+  form .dnd-upload-status .dnd-upload-details{
+    margin-left: .5em;
+    padding-left: 0px;
+  }
+  form .dnd-upload-status .dnd-upload-details .name{
+    font-size: .8em;
+  }
+  form .dnd-upload-status .dnd-upload-details .name span{
+    font-size: 1em;
+  }
+  
+  form .dnd-upload-status .dnd-upload-details .remove-file span{
+    color: var(--mainColor);
+  }
+  form .dnd-upload-status .dnd-upload-details .dnd-progress-bar{
+    height: 24px;
+  }
+  form .dnd-upload-status .dnd-upload-details .dnd-progress-bar > span{
+    background-color: var(--secondAltColor);
+    color: var(--darkColor);
+    line-height: 24px;
+    font-family: var(--fontText);
+    font-size: var(--formSmallFontSize);
+    padding-right: 4px;
+  }
+  form .dnd-upload-status.complete .dnd-upload-details .dnd-progress-bar > span{
+    width: 100% !important;
+  }
+  form .dnd-upload-status .dnd-upload-details .name{
+    color: var(--mainAltColorDarker);
+  }
+  form .dnd-upload-status .dnd-upload-details .name em{
+    color: var(--mainColorDarker);
+  }
+  form .codedropz-upload-handler{
+    margin-bottom: 0px;
+  }
+  form p:has(.consent-label){
+    margin-bottom: 0px;
+  }
+  form .consent-label{
+    padding: 0px;
+  }
+  form .wpcf7-acceptance span,
+  form .wpcf7-acceptance span label,
+  form .wpcf7-acceptance label input{
+    width: auto;
+    display: inline-block;
+    font-size: var(--formSmallFontSize);
+    text-align: left;
+  }
+  form .wpcf7-acceptance label span{
+    display: inline;
+  }
+  form .wpcf7-acceptance{
+    margin-top: 1em;
+    width: auto;
+    display: inline-block;
+  }
+  form span.caption{
+    font-size: var(--formXSmallFontSize);
+    text-align: right;
   }
   form input.wpcf7-submit{
     padding: .5em 3em;
@@ -909,7 +1023,7 @@ section{
   }
   form p.small-text,
   form p.small-text a{
-    font-size: .9rem;
+    font-size: var(--formSmallFontSize);
     width: 50%;
   }
 
@@ -970,21 +1084,14 @@ section{
 .page-content h1{
   margin-top: 0px;
 }
-
-
 .page-content{
   margin: auto var(--pageVerticalMargin);
   padding: 0px;
   width: var(--pageWidth);
   margin-top: var(--pageTopMargin);
 }
-
 .remove-margins{
   margin: 0px;
-}
-
-.hours-container p{
-  font-size: var(--hoursTextSize);
 }
 
 
@@ -2073,6 +2180,9 @@ Responsive Design
   :root{
     --pageWidth: 1280px;
   }
+  form .radio-group.wpcf7-form-control.wpcf7-radio{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media screen and (max-width: 1440px) {
   :root{
@@ -2081,6 +2191,7 @@ Responsive Design
   .woocommerce-page ul.products.columns-3 li.product{
     width: 49%;
   }
+  
 }
 @media screen and (max-width: 1180px) {
   :root{
@@ -2089,7 +2200,23 @@ Responsive Design
   .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{
     flex-basis: 50% !important;
   }
-  
+  .modal-card > div{
+    margin-top: calc( 2vh + 64px);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: calc(90vh - 1em);
+    width: calc(95vw - 1em);
+    box-sizing: border-box;
+  }
+  .modal-card .left-section img{
+    border-top-right-radius: 10px;
+  }
+  form{
+    border-top-left-radius: 10px;
+  }
+  form .radio-group.wpcf7-form-control.wpcf7-radio{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media screen and (max-width: 1000px) {
   :root{
@@ -2142,6 +2269,15 @@ Responsive Design
   .modal-card > div{
     flex-direction: column;
   }
+  .modal-card .wpcf7 form{
+    margin: 0px;
+    padding: 1em 2em;
+    padding-bottom: 4em;
+  }
+
+  /*
+  * form
+  */
 
   .service-card-container > div{
     grid-template-columns: repeat(2, 1fr);
@@ -2303,7 +2439,9 @@ Responsive Design
   }  
 }
 @media screen and (max-width: 768px) {
-
+  :root{
+    --formFontSize: 1.5rem;
+  }
   .service-card-container > div{
     grid-template-columns: repeat(1, 1fr);
   }
@@ -2324,7 +2462,6 @@ Responsive Design
     animation: none;
 
   }
-
   .service-card:hover{
     background-color: var(--mainAltColor) !important;
     color: var(--mainColor);
@@ -2336,6 +2473,37 @@ Responsive Design
   .service-card:hover svg{
     color: var(--darkColor);
   }
+  /*
+  * Modal Card
+  */
+  .modal-card > div{
+    margin-top: 0px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    overflow-y: auto;
+    padding: 0px;
+  }
+  .modal-card button{
+    right: none;
+    left: 20px;
+    top: 10px
+  }
+  .modal-card > div > div:first-child{
+    padding: 1em;
+  }
+  /*
+  * Form 
+  */
+  form .radio-group.wpcf7-form-control.wpcf7-radio{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  form p.small-text, form p.small-text a {
+    font-size: var(--formSmallFontSize);
+    width: 100%;
+}
+
   .single-product .product .woocommerce-product-gallery__image > a img{
     border-radius: 10px 10px 0px 0px;
   }
@@ -2399,6 +2567,15 @@ Responsive Design
     color: var(--mainColor);
     filter: brightness(95%);
   }
+  form .radio-group.wpcf7-form-control.wpcf7-radio{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5em;
+  }
+  form div.same-line{
+    flex-direction: column;
+    font-size: var(--formFontSize);
+    gap: 1em;
+  }
 }
 @media screen and (max-width: 410px) {
   :root{
@@ -2418,7 +2595,6 @@ Responsive Design
 @media screen and (max-width: 350px) {
   :root{
     --h1Size: 2.3rem;
-    --hoursTextSize: 1rem;
   }
   #footer-menu{
     flex-wrap: wrap;
@@ -2433,6 +2609,5 @@ Responsive Design
 @media screen and (max-width: 283px) {
   :root{
     --h1Size: 2rem;
-    --hoursTextSize: 0.9rem;
   }
 }

@@ -10,7 +10,7 @@ function toggleModal(modalDivString, modalButtonString){
     modalDiv.classList.add("open-modal");
     modalButton.ariaExpanded = true;
     modalToggle = true;
-
+    document.body.classList.add("no-scroll");
     modalDivListener = modalDivString;
     modalButtonListener = modalButtonString;
 
@@ -20,8 +20,7 @@ function toggleModal(modalDivString, modalButtonString){
     modalDiv.classList.remove("open-modal");
     modalButton.ariaExpanded = false;
     modalToggle = false;
-
-    console.log("I am here");
+    document.body.classList.remove("no-scroll");
     console.log(modalDivListener);
     modalButton.removeEventListener('keydown', escapeFromModal);
     modalDiv.removeEventListener('keydown', escapeFromModal);
