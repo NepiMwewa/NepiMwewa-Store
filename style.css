@@ -535,15 +535,6 @@ section{
   /*
   * services Cards
   */
-  .services{
-
-  }
-  .services h2{
-
-  }
-  .service-card-row-container{
-
-  }
   .service-card-container > div{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -562,6 +553,7 @@ section{
     justify-content: center;
     align-items: flex-end;
   }
+
   .service-card .service-grouped-content{
     height: 100%;
   }
@@ -689,6 +681,36 @@ section{
     display: none;
     background-color: rgba(0, 0, 0, 0.53);
     backdrop-filter: blur(4px);
+  }
+
+ 
+  ::-webkit-scrollbar{
+    width: 14px;
+  }
+  ::-webkit-scrollbar-track{
+    background: var(--mainBackgroundLighter);
+    
+  }
+  .modal-card > div::-webkit-scrollbar-track{
+    border-radius: 10px;
+    margin: 5px;
+  }
+  ::-webkit-scrollbar-button{
+    display: none;
+  }
+  ::-webkit-scrollbar-thumb{
+    background: var(--mainAltColorDarker);
+  }
+  .modal-card > div::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background: var(--mainAltColor);
+  }
+  @supports (scrollbar-color: red blue){
+    *{
+      scrollbar-color: var(--mainAltColorDarker) var(--mainBackgroundLighter);
+    }
   }
   .open-modal{
     display: block;
@@ -843,6 +865,9 @@ section{
   
   form .radio-group .wpcf7-list-item label input:hover ~ span{
     border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
+    background-color: #63bba8;
+    color: #fff;
+    filter: brightness(80%);
   }
   form .radio-group .wpcf7-list-item label input:checked ~ span{
     background-color: var(--mainAltColorDarker);
@@ -850,6 +875,7 @@ section{
     font-weight: 400;
     box-shadow: var(--boxShadow), inset 2px 2px 0px rgba(255, 255, 255, 0.438), inset -2px -2px 0px rgba(37, 37, 37, 0.445);
     border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    filter: brightness(1);
   }
   form .radio-group .wpcf7-list-item label input:focus-visible ~ span{
     border: 4px var(--mainColor) solid;
