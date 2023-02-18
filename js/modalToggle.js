@@ -7,7 +7,7 @@ function toggleModal(modalDivString, modalButtonString){
   let modalDiv = document.getElementById(modalDivString);
   let modalButton = document.getElementById(modalButtonString);
   if(!modalToggle){
-    modalDiv.classList.add("open-modal");
+    modalDiv.classList.toggle("open-modal");
     modalButton.ariaExpanded = true;
     modalToggle = true;
     document.body.classList.add("no-scroll");
@@ -17,7 +17,7 @@ function toggleModal(modalDivString, modalButtonString){
     modalButton.addEventListener('keydown', (event) => escapeFromModal(event));
     modalDiv.addEventListener('keydown', (event) => escapeFromModal(event));
   }else{
-    modalDiv.classList.remove("open-modal");
+    modalDiv.classList.toggle("open-modal");
     modalButton.ariaExpanded = false;
     modalToggle = false;
     document.body.classList.remove("no-scroll");

@@ -532,6 +532,24 @@ section{
   margin: 0px;
 }
 
+.image-parallax-container{
+  position: relative;
+  height: 500px;
+  min-height: 500px;
+  max-height: 500px;
+  margin: 50px 10px;
+  clip-path: inset(0);
+}
+.image-parallax{
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
   /*
   * services Cards
   */
@@ -668,22 +686,6 @@ section{
   /*
   * Modal Styles
   */
-  .grecaptcha-badge{
-    z-index: 5;
-  }
-  .modal-card{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.53);
-    backdrop-filter: blur(4px);
-  }
-
- 
   ::-webkit-scrollbar{
     width: 14px;
   }
@@ -707,13 +709,67 @@ section{
   ::-webkit-scrollbar-thumb:hover{
     background: var(--mainAltColor);
   }
-  @supports (scrollbar-color: red blue){
+  @supports (scrollbar-color: rgb(8, 226, 172) rgb(34, 34, 34)){
     *{
       scrollbar-color: var(--mainAltColorDarker) var(--mainBackgroundLighter);
     }
   }
+  .grecaptcha-badge{
+    z-index: 5;
+  }
+  .modal-card{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.53);
+    backdrop-filter: blur(4px);
+  }
+  @keyframes open-modal-animation-background {
+    from{
+      background-color: rgba(0, 0, 0, 0.0);
+      backdrop-filter: blur(0px);
+    }
+    to{
+      background-color: rgba(0, 0, 0, 0.53);
+      backdrop-filter: blur(4px);
+    }
+  }
+  @keyframes open-modal-animation{
+    from{
+      transform: translateY(50vh) scale(0);
+    }
+    to{
+      transform: translateY(0)  scale(1);
+    }
+  }
+  @keyframes open-modal-button{
+    0%,50%{
+      transform: scale(0);
+      opacity: 0;
+    }
+    
+    100%{
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
   .open-modal{
     display: block;
+    animation: 1s 1 open-modal-animation-background;
+    animation-timing-function:  cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .open-modal > div{
+    animation: 1s 1 open-modal-animation;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .open-modal > div button.close-modal{
+    animation: 2s 1 open-modal-button;
+    animation-timing-function:  cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .modal-card > div{
@@ -742,7 +798,7 @@ section{
     border-radius: 5px;
     border-top-left-radius: 10px;
   }
-  .modal-card button{
+  .modal-card button.close-modal{
     position: fixed;
     top: calc( 2vh + 64px + 2em);
     right: calc( 5vw + 3em);
@@ -753,13 +809,13 @@ section{
     background-color: var(--mainBackgroundLighter);
     border-color: var(--mainAltColor);
   }
-  .modal-card button svg{
+  .modal-card button.close-modal svg{
     display: block;
     width: 100%;
     height: 100%;
     color: var(--mainColor);
   }
-  .modal-card button:hover{
+  .modal-card button.close-modal:hover{
     cursor: pointer;
     filter: brightness(90%);
   }
