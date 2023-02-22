@@ -489,6 +489,10 @@ li{
   margin-left: 0px;
   margin-right: 0px;
 }
+.add-margin{
+  width: var(--pageWidth);
+  margin: auto;
+}
 section{
   width: var(--pageWidth);
   margin: auto;
@@ -519,13 +523,16 @@ section{
   min-width: 400px;
   letter-spacing: 0.2em;
 }
+.my-journey {
+  z-index: 5;
+}
 .my-journey p{
   padding-right: 12px;
 }
 .spacer-picture{
   position: relative;
-  top: -250px;
-  z-index: -3;
+  top: -300px;
+  z-index: -10;
 }
 
 .spacer-picture figure{
@@ -534,10 +541,10 @@ section{
 
 .image-parallax-container{
   position: relative;
-  height: 500px;
-  min-height: 500px;
-  max-height: 500px;
-  margin: 50px 10px;
+  --parallax-height: 500px;
+  height: var(--parallax-height);
+  min-height: var(--parallax-height);
+  max-height: var(--parallax-height);
   clip-path: inset(0);
 }
 .image-parallax{
@@ -553,6 +560,10 @@ section{
   /*
   * services Cards
   */
+  .services{
+    position: relative;
+    top: -150px;
+  }
   .service-card-container > div{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -680,7 +691,8 @@ section{
     opacity: 1;
   }
   .service-card button:hover{
-    filter: brightness(90%);
+    filter: brightness(120%);
+    background-color: #383f3a;
   }
 
   /*
@@ -1232,64 +1244,85 @@ section{
   padding: var(--cardPadding) !important;
 }
 
-/* Post collection Page */
-.index-content .post-container{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-content: space-around;
+/* insta feed */
 
-  gap: 8px;
+#sb_instagram #sbi_images .sbi_item{
+  position: relative;
 }
-.index-content .post{
-  display: flex;
-  flex-direction: column;
+#sb_instagram #sbi_images .sbi_item:hover{
+  overflow: visible !important;
+  transform: scale(1.3);
+  opacity: 1 !important;
+  z-index: 5;
+}
+#sb_instagram .sbi_photo:hover{
+  opacity: 1 !important;
+}
+#sb_instagram .sbi_photo svg{
+  display: none !important;
+}
 
-  max-width: 400px;
-  width: auto;
-  
-  margin-bottom: 2rem;
+#sb_instagram #sbi_load{
+  margin-top: 40px;
+}
 
-  background-color: var(--cardBackground);
-  border-radius: 10px;
-  box-shadow: var(--boxShadow);  
+/* photos shop */
+
+.photos-shop{
 }
-.index-content .post p{
-  font-size: var(--postSize);
-}
-.index-content .text-section{
-  margin: var(--cardPadding);
-}
-.index-content .thumbnail img{
-  border-radius: 10px 10px 0px 0px;
-  border-bottom: 2px solid var(--boarderColor);
-  width: 100%;
-  height: 100%;
-}
-.index-content h2{
-  font-size: var(--h4Size);
-  font-style: italic;
-  font-weight: lighter;
-  margin: 8px 0px;
-}
-.index-content .read-more-button{
-  margin-top: auto;
-  margin-bottom: 20px;
-}
-.index-content .read-more-button a,
-.index-content .read-more-button a:visited{
-  font-size: 0.7rem;
-  font-weight: bold;
-  text-decoration:none;
-  text-transform: uppercase;
-  letter-spacing: .07rem;
-  margin: auto;
-  margin-top: 1.4rem;
-  border: 2px solid var(--mainColor);
-  width: 60%;
-  padding: 0.7rem .5rem;
+.photos-shop h3{
+  font-family: var(--fontHeading);
   text-align: center;
+}
+.photos-shop h3,
+.photos-shop h3 a{
+  color: var(--darkColor);
+  font-size: var(--h2Size);
+  font-weight: 300;
+  letter-spacing: .2em;
+}
+.photos-shop h3 a{
   display: block;
+}
+.photos-shop a:hover{
+  text-decoration-color: var(--mainAltColorDarker);
+}
+
+.photos-shop img{
+
+}
+.photos-shop .photo-frame img{
+}
+.photos-shop .wp-block-column{
+  position: relative;
+}
+.photos-shop .photo-laptop{
+  --laptop-color: #414141;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: -150px;
+  right: -175px;
+  filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.5));
+  
+}
+.photos-shop .photo-laptop > img{
+  border: 6px solid var(--laptop-color);
+  border-radius: 5px 5px 0px 0px;
+  position: relative;
+}
+
+.photos-shop .photo-laptop::after{
+  --base-width: 80px;
+  content: ' ';
+  display: block;
+  position: absolute;
+  background-color: var(--laptop-color);
+  height: 12px;
+  bottom: -10px;
+  width: calc(100% + var(--base-width));
+  border-radius: 1px 1px 10px 10px;
+  box-shadow: inset 0px -4px 4px 0px rgba(0, 0, 0, 0.4);
 }
 
   /*
@@ -2341,9 +2374,6 @@ Responsive Design
   .tall-slanted-img-container{
     position: relative;
 
-  }
-  .spacer-picture{
-    top: -220px;
   }
   /*
   * modal card

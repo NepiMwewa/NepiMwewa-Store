@@ -15,7 +15,7 @@
   <div class="footer-copyright">
     <div class="copyright-info">
       <p><?php
-        echo ('&copy; ' . date_i18n( 'Y' ) . ' Boron Aerospace Museum' );
+        echo ('&copy; ' . date_i18n( 'Y' ) . " Harmon's Photography" );
       ?></p>
     </div>
     <div class="privacy-menu-container">
