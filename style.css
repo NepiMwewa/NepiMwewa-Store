@@ -52,7 +52,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --cardBackground: #2f3631;
   --boarderColor: #E8E9F3;
 
-  --boxShadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  --boxShadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.25);
   --boxShadowLight: 4px 4px 4px rgba(219, 219, 219, 0.25);
   --cardShadow: 0px 2px 0px 4px rgba(76, 91, 94, 0.37);
 
@@ -92,6 +92,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --pageTopMargin: 74px;
   /*front page */
   --frontPageTopMargin: 0px;
+  --slant-angle: 300px;
 
   /* card */
   --cardPadding: 10px;
@@ -525,13 +526,25 @@ section{
 }
 .my-journey {
   z-index: 5;
+  padding-bottom: 200px;
+  margin-bottom: 0px;
 }
 .my-journey p{
   padding-right: 12px;
 }
+.my-journey .spacer-picture{
+  position: absolute;
+  width: 100%;
+  top:auto;
+  bottom: 0px;
+}
+.my-journey .image-parallax-container{
+  --parallax-height: 820px;
+}
+
 .spacer-picture{
   position: relative;
-  top: -300px;
+  top: 0px;
   z-index: -10;
 }
 
@@ -555,14 +568,42 @@ section{
   width: 100%;
   height: 100%;
 }
-
-
+.spacer-picture .slanted-divider-top{
+  fill: var(--mainBackground);
+}
+.spacer-picture .slanted-divider-bottom{
+  fill: var(--mainColor);
+}
+.spacer-picture .slanted-divider-top{
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.spacer-picture .slanted-divider-bottom{
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+.spacer-picture .slanted-divider-top svg,
+.spacer-picture .slanted-divider-bottom svg{
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: var(--slant-angle);
+  transform: rotateY(180deg);
+}
   /*
   * services Cards
   */
   .services{
     position: relative;
-    top: -150px;
   }
   .service-card-container > div{
     display: grid;
@@ -1246,6 +1287,9 @@ section{
 
 /* insta feed */
 
+.insta-feed{
+  margin-bottom: 4rem;
+}
 #sb_instagram #sbi_images .sbi_item{
   position: relative;
 }
@@ -1266,13 +1310,62 @@ section{
   margin-top: 40px;
 }
 
+
+/* blocked-section */
+.blocked-section{
+  position: relative;
+  padding: 25em 0px;
+  margin: 8em 0px;
+}
+.blocked-section .slanted-divider-top,
+.blocked-section .slanted-divider-bottom{
+  fill: var(--mainBackground);
+}
+.blocked-section .slanted-divider-top{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  
+}
+.blocked-section .slanted-divider-bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+.blocked-section .slanted-divider-top svg,
+.blocked-section .slanted-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: var(--slant-angle);
+  transform: rotateY(180deg);
+}
+
+.slanted-divider-top,
+.slanted-divider-bottom{
+  z-index: 2;
+}
 /* photos shop */
 
-.photos-shop{
+.photos-shop.blocked-section{
+  margin-top: 0px;
+  padding-top: 15em;
+  padding-bottom: 30em;
 }
+
 .photos-shop h3{
   font-family: var(--fontHeading);
   text-align: center;
+  max-width: 10em;
+  margin: auto;
+  margin-top: calc(50% - 8 * 1em);
 }
 .photos-shop h3,
 .photos-shop h3 a{
@@ -1288,10 +1381,9 @@ section{
   text-decoration-color: var(--mainAltColorDarker);
 }
 
-.photos-shop img{
-
-}
-.photos-shop .photo-frame img{
+.photos-shop .photo-frame {
+  position: relative;
+  margin-bottom: 100px;
 }
 .photos-shop .wp-block-column{
   position: relative;
@@ -1301,8 +1393,8 @@ section{
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: -150px;
-  right: -175px;
+  bottom: 0px;
+  right: -150px;
   filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.5));
   
 }
@@ -2387,6 +2479,37 @@ Responsive Design
     padding-bottom: 4em;
   }
 
+  /* 
+  * photo shop
+  */
+  .add-margin{
+    margin: var(--pageSideMargin);
+    width: auto;
+    flex-direction: column-reverse;
+  }
+  .photos-shop{
+
+  }
+  .photos-shop .wp-block-column{
+    position: relative;
+  }
+  .photos-shop h3 {
+    margin-top: 0px;
+    margin-bottom: 2em;
+  }
+  .photos-shop .photo-frame {
+    position: relative;
+    margin: auto;
+    margin-bottom: 0px;
+    width: 65%;
+    margin-bottom: 2em;
+  }
+  .photos-shop .photo-laptop{
+    bottom: calc(-18em + 40%);
+    right: 35%;
+    translate: 50% 0px;
+  }
+
   /*
   * form
   */
@@ -2688,6 +2811,41 @@ Responsive Design
     font-size: var(--formFontSize);
     gap: 1em;
   }
+
+   /* 
+  * photo shop
+  */
+  .add-margin{
+    margin: var(--pageSideMargin);
+    flex-direction: column-reverse;
+  }
+  .photos-shop{
+
+  }
+  .photos-shop .wp-block-column{
+    position: relative;
+  }
+  .photos-shop h3 {
+    margin-top: 0px;
+    margin-bottom: 2em;
+  }
+  .photos-shop .photo-frame {
+    position: relative;
+    margin-bottom: 0px;
+    width: auto;
+    margin-bottom: 100px;
+  }
+  .photos-shop .photo-laptop{
+    position: relative;
+    top: 0px;
+    right: auto;
+    left: 0;
+    translate: 0px 0px;
+    width: 80%;
+    margin: auto;
+
+  }
+
 }
 @media screen and (max-width: 410px) {
   :root{
