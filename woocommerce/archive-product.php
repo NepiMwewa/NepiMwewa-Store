@@ -26,15 +26,20 @@ get_header( 'shop' );
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
-do_action( 'woocommerce_before_main_content' );
+							//Disable breadcrumbs form home shop page
+	//do_action( 'woocommerce_before_main_content' );
 
 ?>
-<header class="woocommerce-products-header">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-		
-	<?php endif; ?>
+<div id="primary" class="content-area no-margin-page shop-page page-content">
+ <div class="woocommerce-products-header">
 	<?php
+	//Disable the heading for the home shop page
+	/* if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+	<?php endif; 
+	*/?>
+	<?php
+	
 	/**
 	 * Hook: woocommerce_archive_description.
 	 *
@@ -43,7 +48,8 @@ do_action( 'woocommerce_before_main_content' );
 	 */
 	do_action( 'woocommerce_archive_description' );
 	?>
-</header>
+</div>
+<div class="products-content">
 <?php
 if ( woocommerce_product_loop() ) {
 
@@ -89,7 +95,9 @@ if ( woocommerce_product_loop() ) {
 	 */
 	do_action( 'woocommerce_no_products_found' );
 }
-
+?>
+</div>
+<?php
 /**
  * Hook: woocommerce_after_main_content.
  *

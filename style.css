@@ -1,16 +1,13 @@
 /*
-Theme Name: NepiMwewa Store
+Theme Name: Photostore Store
 Author: Alexander Harmon
 Author URI: https://alexanderharmon.dev/
-Description: A WordPress theme for Boron Aerospace Museum.
+Description: A WordPress theme for online photography website & store.
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 :root{
-  /*
-   *
-  */
   --mainBackground: #1F2421;
   --mainBackgroundLighter: #2f3631;
   --altBackgroundColor: #151B19;
@@ -1617,6 +1614,23 @@ div.wpforms-container-full .wpforms-form label.wpforms-error{
 }
 div.wpforms-container-full .wpforms-form .wpforms-required-label{
   color: var(--mainColor);
+}
+
+/*
+* Shop Page
+*/
+
+.page-content.no-margin-page{
+  margin: 0px;
+  width: auto;
+}
+.page-content.no-margin-page.shop-page > *{
+  margin: auto;
+  width: var(--pageWidth);
+}
+.page-content.no-margin-page.shop-page > .woocommerce-products-header{
+  width: auto;
+  margin: 0px;
 }
 
 /*

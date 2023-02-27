@@ -65,3 +65,5 @@ function remove_loop_button(){
   add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );
 }
 add_action('init','remove_loop_button');
+
+include('custom-shortcodes.php');
